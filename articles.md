@@ -1,13 +1,41 @@
 # AI타임스 최근 10일 기사 목록
-- 수집 시각: 2026-07-17 00:49 KST / 총 49건 (이번 실행 신규 20건)
+- 수집 시각: 2026-07-17 15:29 KST / 총 63건 (이번 실행 신규 14건)
 
+- 2026-07-17 13:49 | 중국 메모리 대표 CXMT, 상하이 IPO 청약 212대 1 기록...14조 뭉칫돈 몰려
+  https://www.aitimes.com/news/articleView.html?idxno=212892
+- 2026-07-17 13:42 | "모델 그대로 하네스만 바꿨더니...ARC-AGI-3서 인간 효율 99% 근접"
+  https://www.aitimes.com/news/articleView.html?idxno=212889
+- 2026-07-17 13:14 | 구글 비즈에 '제미나이 옴니·개인 아바타' 탑재...종합 AI 영상 플랫폼으로 진화
+  https://www.aitimes.com/news/articleView.html?idxno=212891
+- 2026-07-17 13:06 | 엔비디아, 4B 규모 월드 모델 ‘코스모스 3 엣지’ 공개...'온디바이스 피지컬 AI' 실현
+  https://www.aitimes.com/news/articleView.html?idxno=212880
+- 2026-07-17 12:53 | 구글, ‘AI 모드’에 외부 앱 연동 확장..."검색에서 장보기·디자인까지"
+  https://www.aitimes.com/news/articleView.html?idxno=212883
+- 2026-07-17 12:42 | 오픈AI, GPT-5.6 '파일 삭제' 원인 규명..."샌드박스·오토 리뷰 필수"
+  https://www.aitimes.com/news/articleView.html?idxno=212888
+- 2026-07-17 12:12 | EU, 구글에 안드로이드 개방 명령…“타사 AI 허용하고 검색 데이터 공유할 것”
+  https://www.aitimes.com/news/articleView.html?idxno=212890
+- 2026-07-17 11:22 | 일본, 엔비디아 '루빈'으로 국가 AI 인프라 구축…'피지컬 AI' 승부
+  https://www.aitimes.com/news/articleView.html?idxno=212885
+- 2026-07-17 10:55 | '노트북LM'→'제미나이 노트북' 리브랜딩…코드 실행·데이터 분석 탑재
+  https://www.aitimes.com/news/articleView.html?idxno=212882
+- 2026-07-17 10:26 | 문샷, 2.8조 매개변수 '키미 K3' 공개...세계 3위 성능으로 도약
+  https://www.aitimes.com/news/articleView.html?idxno=212881
+- 2026-07-17 09:30 | 미국 45개주, 분산형 태양광 정책 284건…플러그인 허용 확산
+  https://www.aitimes.com/news/articleView.html?idxno=212820
+- 2026-07-17 08:58 | 구글, '제미나이 3.5 프로' 출시 지연…"성능 목표 미달·코딩 한계"
+  https://www.aitimes.com/news/articleView.html?idxno=212879
+- 2026-07-17 07:00 | [동영상기사] [7월16일] AI 비용 부담의 중심에 선 앤트로픽, 어떤 돌파구를 준비할까
+  https://www.aitimes.com/news/articleView.html?idxno=212823
+- 2026-07-17 06:55 | [동영상기사] AI를 둘러싼 불안과 윤리적 문제… 앤트로픽의 ‘음산한’ 광고?
+  https://www.aitimes.com/news/articleView.html?idxno=212871
 - 2026-07-16 18:39 | "사기 돕고, 평가 속이고"…앤트로픽, 최첨단 AI '탈선 위험' 경고
   https://www.aitimes.com/news/articleView.html?idxno=212837
 - 2026-07-16 18:20 | 스페이스X 품에 안긴 커서, 코딩 도구 넘어 "세계 최고 AI 개발" 선언
   https://www.aitimes.com/news/articleView.html?idxno=212854
 - 2026-07-16 18:03 | "오픈AI·앤트로픽 약점 찔러라"...MS, 새 영업 지침서 파트너 정조준
   https://www.aitimes.com/news/articleView.html?idxno=212848
-- 2026-07-16 17:53 | CIA "우크라이나 AI 드론 위력에 러시아 신병 생존 시간 20~30분 불과'"
+- 2026-07-16 17:53 | CIA "우크라이나 AI 드론 위력에 러시아 신병 생존 시간 30분 불과'"
   https://www.aitimes.com/news/articleView.html?idxno=212867
 - 2026-07-16 17:37 | "운전자가 가속 페달 100% 밟았다"…테슬라, FSD 사망 사고 책임 면할까
   https://www.aitimes.com/news/articleView.html?idxno=212855
