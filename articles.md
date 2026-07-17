@@ -1,6 +1,12 @@
 # AI타임스 최근 10일 기사 목록
-- 수집 시각: 2026-07-17 15:29 KST / 총 63건 (이번 실행 신규 14건)
+- 수집 시각: 2026-07-18 00:01 KST / 총 66건 (이번 실행 신규 3건)
 
+- 2026-07-17 21:22 | 젠슨 황, 일본서도 만찬 소통...이번엔 '단팥빵·모츠나베'가 주인공
+  https://www.aitimes.com/news/articleView.html?idxno=212895
+- 2026-07-17 20:49 | [동영상기사] 스페이스X '스타십 V3' 발사 중단…우주 데이터센터 검증 미뤄져
+  https://www.aitimes.com/news/articleView.html?idxno=212894
+- 2026-07-17 19:41 | [동영상기사] 시진핑 "AI는 모두의 것"...오픈소스 앞세워 미국 'AI 패권' 정면 견제
+  https://www.aitimes.com/news/articleView.html?idxno=212893
 - 2026-07-17 13:49 | 중국 메모리 대표 CXMT, 상하이 IPO 청약 212대 1 기록...14조 뭉칫돈 몰려
   https://www.aitimes.com/news/articleView.html?idxno=212892
 - 2026-07-17 13:42 | "모델 그대로 하네스만 바꿨더니...ARC-AGI-3서 인간 효율 99% 근접"
