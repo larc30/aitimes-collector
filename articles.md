@@ -1,6 +1,22 @@
 # AI타임스 최근 10일 기사 목록
-- 수집 시각: 2026-07-18 00:01 KST / 총 66건 (이번 실행 신규 3건)
+- 수집 시각: 2026-07-18 14:53 KST / 총 74건 (이번 실행 신규 8건)
 
+- 2026-07-18 11:57 | 애플, 오픈AI '하드웨어 이직자' 40명에 경고 서한 발송.."증거 보존하라"
+  https://www.aitimes.com/news/articleView.html?idxno=212898
+- 2026-07-18 11:40 | "AI 연인 대신 진짜 아기를"…중국, 'AI 페르소나' 단속 나선 속사정
+  https://www.aitimes.com/news/articleView.html?idxno=212903
+- 2026-07-18 11:32 | 미 의회, 트럼프 행정부에 중국산 메모리 금지 촉구...애플 도입에 '제동'
+  https://www.aitimes.com/news/articleView.html?idxno=212902
+- 2026-07-18 11:14 | 데이터브릭스, 280조 가치로 '시리즈 M' 투자 유치…"상장 안 서두른다"
+  https://www.aitimes.com/news/articleView.html?idxno=212897
+- 2026-07-18 10:00 | [AI카툰] Bob, Senior IT guy - 밥, "네트워킹은 인생의 낭비일까?"
+  https://www.aitimes.com/news/articleView.html?idxno=212886
+- 2026-07-18 10:00 | [내면 지도 그리기] 25 Inner Mapping: 나를 찾는 지도
+  https://www.aitimes.com/news/articleView.html?idxno=212887
+- 2026-07-18 09:15 | 중국 태양광 BESS 정책 전환…독립형이 신규 설비 85% 차지
+  https://www.aitimes.com/news/articleView.html?idxno=212830
+- 2026-07-18 06:45 | 메타, 앤트로픽과 15조 AI 인프라 임대 논의…클라우드 진출 눈앞
+  https://www.aitimes.com/news/articleView.html?idxno=212896
 - 2026-07-17 21:22 | 젠슨 황, 일본서도 만찬 소통...이번엔 '단팥빵·모츠나베'가 주인공
   https://www.aitimes.com/news/articleView.html?idxno=212895
 - 2026-07-17 20:49 | [동영상기사] 스페이스X '스타십 V3' 발사 중단…우주 데이터센터 검증 미뤄져
