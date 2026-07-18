@@ -1,6 +1,18 @@
 # AI타임스 최근 10일 기사 목록
-- 수집 시각: 2026-07-18 14:53 KST / 총 74건 (이번 실행 신규 8건)
+- 수집 시각: 2026-07-18 23:33 KST / 총 80건 (이번 실행 신규 6건)
 
+- 2026-07-18 18:38 | 애플-엔비디아, 시총 1위 두고 '초박빙' 접전…장중 한때 애플 선두 탈환
+  https://www.aitimes.com/news/articleView.html?idxno=212906
+- 2026-07-18 18:03 | [AI 이슈트렌드] 반도체발 코스피 쇼크 속 홈플러스 파산 위기 주목
+  https://www.aitimes.com/news/articleView.html?idxno=212904
+- 2026-07-18 17:48 | 스페이스X, 미 국방부와 수십억달러 'AI 클라우드 공급' 논의
+  https://www.aitimes.com/news/articleView.html?idxno=212905
+- 2026-07-18 17:06 | 영국 AISI 경고 “중국 오픈 모델, 미국과 사이버 보안 격차 4개월로 단축”
+  https://www.aitimes.com/news/articleView.html?idxno=212900
+- 2026-07-18 16:34 | 딥시크, 기업가치 77조 달해...공식 문서로 몸값 처음 확인
+  https://www.aitimes.com/news/articleView.html?idxno=212901
+- 2026-07-18 15:53 | 지푸, 'GLM-5.2' 흥행으로 중국 AI 최초 연매출 10억달러 눈앞
+  https://www.aitimes.com/news/articleView.html?idxno=212899
 - 2026-07-18 11:57 | 애플, 오픈AI '하드웨어 이직자' 40명에 경고 서한 발송.."증거 보존하라"
   https://www.aitimes.com/news/articleView.html?idxno=212898
 - 2026-07-18 11:40 | "AI 연인 대신 진짜 아기를"…중국, 'AI 페르소나' 단속 나선 속사정
