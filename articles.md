@@ -1,13 +1,25 @@
 # AI타임스 최근 10일 기사 목록
-- 수집 시각: 2026-07-18 23:33 KST / 총 80건 (이번 실행 신규 6건)
+- 수집 시각: 2026-07-19 16:18 KST / 총 86건 (이번 실행 신규 6건)
 
+- 2026-07-19 15:40 | 중국, 미국의 'AI 기술 무단 추출' 주장 전면 부인..."기술 경쟁 정치화" 비판
+  https://www.aitimes.com/news/articleView.html?idxno=212909
+- 2026-07-19 15:20 | 미국 전역서 AI 데이터센터 반대 시위…42개 주서 초당적 동시 집회
+  https://www.aitimes.com/news/articleView.html?idxno=212911
+- 2026-07-19 14:59 | 애플, 일본서 아이폰 17 가격 10% 인상...'엔화 약세' 반영
+  https://www.aitimes.com/news/articleView.html?idxno=212910
+- 2026-07-19 11:47 | 젠슨 황이 입었던 가죽 재킷, 소더비 경매서 14억에 최종 낙찰
+  https://www.aitimes.com/news/articleView.html?idxno=212912
+- 2026-07-19 09:24 | 앤트로픽, '페이블 5' 정식 요금제 편입...프로모션 종료하고 '50% 제한'
+  https://www.aitimes.com/news/articleView.html?idxno=212908
+- 2026-07-19 07:59 | 115년 상징의 추락...IBM 25% 폭락이 경고하는 'AI 블랙홀'
+  https://www.aitimes.com/news/articleView.html?idxno=212907
 - 2026-07-18 18:38 | 애플-엔비디아, 시총 1위 두고 '초박빙' 접전…장중 한때 애플 선두 탈환
   https://www.aitimes.com/news/articleView.html?idxno=212906
 - 2026-07-18 18:03 | [AI 이슈트렌드] 반도체발 코스피 쇼크 속 홈플러스 파산 위기 주목
   https://www.aitimes.com/news/articleView.html?idxno=212904
 - 2026-07-18 17:48 | 스페이스X, 미 국방부와 수십억달러 'AI 클라우드 공급' 논의
   https://www.aitimes.com/news/articleView.html?idxno=212905
-- 2026-07-18 17:06 | 영국 AISI 경고 “중국 오픈 모델, 미국과 사이버 보안 격차 4개월로 단축”
+- 2026-07-18 17:06 | 영국 AISI 경고 “중국 오픈 모델, 미국과 보안 격차 4개월로 단축”
   https://www.aitimes.com/news/articleView.html?idxno=212900
 - 2026-07-18 16:34 | 딥시크, 기업가치 77조 달해...공식 문서로 몸값 처음 확인
   https://www.aitimes.com/news/articleView.html?idxno=212901
