@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-AI타임스 과거 기사 백필 스크립트 (일회성)
-- 목록 페이지네이션이 서버에서 막혀 있어(page=2+가 1페이지와 동일 응답)
-  기사 idxno가 순차 발번인 점을 이용해 역순으로 상세 페이지를 직접 순회한다.
-- 시작점: articles.json의 최소 idxno - 1 (또는 환경변수 START_IDXNO)
-- 종료점: 게재일이 UNTIL_DATE(기본 2026-07-13) 이전인 기사가
-  STOP_STREAK건 연속으로 나오면 중단
-- 결과는 articles.json에 병합 후 articles.md 재생성 (collect.py와 동일 포맷)
+AI타임스 과거 기사 백필 + 리드문 리프레시 스크립트
+- 모드 1 (기본): idxno 역순 순회로 과거 기사 백필
+- 모드 2 (REFRESH_LEADS=1): 이미 수집된 기사 중 리드문이 없거나
+  중간에 잘린 것만 재방문해서 본문 첫 1~2문장으로 교체
 
 사용 예:
-  python backfill.py
-  UNTIL_DATE=2026-07-13 START_IDXNO=212802 python backfill.py
+  python backfill.py                      # 과거 기사 백필
+  REFRESH_LEADS=1 python backfill.py      # 잘린 리드문 일괄 교체
 """
 import json
 import os
@@ -24,16 +21,18 @@ from bs4 import BeautifulSoup
 
 BASE = "https://www.aitimes.com"
 ARTICLE_URL = BASE + "/news/articleView.html?idxno={idxno}"
-UNTIL_DATE = os.environ.get("UNTIL_DATE", "2026-07-13")   # 이 날짜(포함)까지 수집
-START_IDXNO = os.environ.get("START_IDXNO", "")           # 비우면 json 최소값-1
-MAX_STEPS = int(os.environ.get("MAX_STEPS", "300"))       # 안전 상한
-STOP_STREAK = 8          # 목표일 이전 기사 연속 N건이면 종료
-MISS_STREAK_LIMIT = 30   # 404 등 연속 실패 N건이면 종료
+UNTIL_DATE = os.environ.get("UNTIL_DATE", "2026-07-13")
+START_IDXNO = os.environ.get("START_IDXNO", "")
+REFRESH_LEADS = os.environ.get("REFRESH_LEADS", "") in ("1", "true", "yes")
+MAX_STEPS = int(os.environ.get("MAX_STEPS", "300"))
+STOP_STREAK = 8
+MISS_STREAK_LIMIT = 30
 SLEEP = 1.0
-LEAD_MAX_LEN = 200
+LEAD_MAX_LEN = 220
 KEEP_DAYS = 15
 KST = timezone(timedelta(hours=9))
 IDX_RE = re.compile(r"idxno=(\d+)")
+SENTENCE_END_RE = re.compile(r"[.!?」』\"']$")
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -43,64 +42,130 @@ HEADERS = {
 }
 
 
-def clean_lead(text):
+# ---------- 리드문 공통 처리 (collect.py와 동일 로직) ----------
+
+def clean_text(text):
     if not text:
         return ""
-    text = re.sub(r"\s+", " ", text).strip()
-    text = text.rstrip("…").rstrip("...")
-    return text[:LEAD_MAX_LEN]
+    return re.sub(r"\s+", " ", text).strip()
 
 
-def meta(soup, **attrs):
+def cap_lead(text, max_len=LEAD_MAX_LEN):
+    """리드문 정리: 내용 최대 보존, 길이 초과 시에만 자르고 '…' 표시."""
+    text = clean_text(text)
+    if len(text) > max_len:
+        return text[:max_len].rstrip() + "…"
+    return text
+
+
+def lead_is_truncated(lead):
+    if not lead:
+        return True
+    return not SENTENCE_END_RE.search(lead.strip())
+
+
+def meta_of(soup, **attrs):
     tag = soup.find("meta", attrs=attrs)
     return tag["content"].strip() if tag and tag.get("content") else ""
+
+
+def lead_from_body(soup):
+    """기사 본문에서 첫 1~2문장 추출 (meta는 CMS가 잘라서 생성하므로 본문 우선).
+    본문은 전체 원문이 있으므로 길이 내 완결 문장으로 구성 → 재방문 루프 방지."""
+    body = soup.select_one(
+        "#article-view-content-div, article#article-view-content-div, "
+        ".article-body, #articleBody"
+    )
+    if not body:
+        return ""
+    parts = []
+    total = 0
+    for p in body.find_all("p"):
+        t = clean_text(p.get_text(" ", strip=True))
+        if len(t) < 30:
+            continue
+        if t.startswith("(사진") or t.startswith("사진=") or t.startswith("(출처"):
+            continue
+        if parts and total + len(t) + 1 > LEAD_MAX_LEN:
+            break  # 다음 문단을 더하면 초과 → 여기까지 (완결 상태 유지)
+        parts.append(t)
+        total += len(t) + 1
+        if len(parts) >= 2:
+            break
+    if not parts:
+        return ""
+    lead = " ".join(parts)
+    if len(lead) <= LEAD_MAX_LEN:
+        return lead
+    cut = lead[:LEAD_MAX_LEN]
+    ends = list(re.finditer(r"다\.|[.!?](?=\s|$)", cut))
+    if ends:
+        return cut[: ends[-1].end()]
+    return cut.rstrip() + "…"
+
+
+def lead_from_detail_soup(soup):
+    lead = lead_from_body(soup)
+    if len(lead) >= 30:
+        return lead
+    return cap_lead(
+        meta_of(soup, property="og:description") or meta_of(soup, name="description")
+    )
+
+
+# ---------- 상세 페이지 파싱 ----------
+
+def get_soup(url):
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=20)
+        if r.status_code != 200:
+            return None
+        return BeautifulSoup(r.text, "html.parser")
+    except Exception as e:
+        print(f"[warn] fetch 실패 {url}: {e}", file=sys.stderr)
+        return None
 
 
 def fetch_article(idxno):
     """상세 페이지에서 기사 정보 추출. 기사가 아니거나 실패 시 None."""
     url = ARTICLE_URL.format(idxno=idxno)
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=20)
-        if r.status_code != 200:
-            return None
-    except Exception as e:
-        print(f"[warn] idxno={idxno} fetch 실패: {e}", file=sys.stderr)
+    soup = get_soup(url)
+    if soup is None:
         return None
 
-    soup = BeautifulSoup(r.text, "html.parser")
-
     # 요청 idxno와 실제 응답 기사 일치 확인 (리다이렉트 방어)
-    canon = meta(soup, property="og:url") or ""
+    canon = meta_of(soup, property="og:url") or ""
     m = IDX_RE.search(canon)
     if m and m.group(1) != str(idxno):
         print(f"[warn] idxno={idxno} → {m.group(1)}로 리다이렉트됨, 건너뜀", file=sys.stderr)
         return None
 
-    pub = meta(soup, property="article:published_time")  # 2026-07-15T16:36:00+09:00
+    pub = meta_of(soup, property="article:published_time")
     if not pub:
-        return None  # 기사 아님 (삭제/공지 등)
+        return None
     try:
         dt = datetime.fromisoformat(pub).astimezone(KST)
     except ValueError:
         return None
 
-    title = meta(soup, property="og:title")
+    title = meta_of(soup, property="og:title")
     title = re.sub(r"\s*-\s*AI타임스\s*$", "", title).strip()
     if not title:
         return None
 
-    lead = clean_lead(meta(soup, property="og:description") or meta(soup, name="description"))
-    section = meta(soup, property="article:section1") or meta(soup, property="article:section")
+    section = meta_of(soup, property="article:section1") or meta_of(soup, property="article:section")
 
     return {
         "title": title,
         "url": url,
         "date": dt.strftime("%Y-%m-%d %H:%M"),
         "section": section,
-        "lead": lead,
+        "lead": lead_from_detail_soup(soup),
         "_dt": dt,
     }
 
+
+# ---------- 저장 ----------
 
 def load_json():
     if not os.path.exists("articles.json"):
@@ -112,15 +177,11 @@ def load_json():
 
 
 def min_idxno(merged):
-    nums = []
-    for url in merged:
-        m = IDX_RE.search(url)
-        if m:
-            nums.append(int(m.group(1)))
+    nums = [int(m.group(1)) for url in merged if (m := IDX_RE.search(url))]
     return min(nums) if nums else None
 
 
-def write_outputs(merged, now):
+def write_outputs(merged, now, label):
     cutoff = now - timedelta(days=KEEP_DAYS)
 
     def in_range(it):
@@ -141,7 +202,7 @@ def write_outputs(merged, now):
         )
     lines = [
         f"# AI타임스 최근 {KEEP_DAYS}일 기사 목록",
-        f"- 수집 시각: {now.strftime('%Y-%m-%d %H:%M')} KST / 총 {len(final)}건 (백필 실행)",
+        f"- 수집 시각: {now.strftime('%Y-%m-%d %H:%M')} KST / 총 {len(final)}건 ({label})",
         "",
     ]
     for it in final:
@@ -155,12 +216,10 @@ def write_outputs(merged, now):
     return len(final)
 
 
-def main():
-    now = datetime.now(KST)
-    until = datetime.strptime(UNTIL_DATE, "%Y-%m-%d").replace(tzinfo=KST)
-    merged = load_json()
-    prev = len(merged)
+# ---------- 모드별 실행 ----------
 
+def run_backfill(merged, now):
+    until = datetime.strptime(UNTIL_DATE, "%Y-%m-%d").replace(tzinfo=KST)
     if START_IDXNO:
         idxno = int(START_IDXNO)
     else:
@@ -175,7 +234,7 @@ def main():
     old_streak = 0
     miss_streak = 0
 
-    for step in range(MAX_STEPS):
+    for _ in range(MAX_STEPS):
         item = fetch_article(idxno)
         if item is None:
             miss_streak += 1
@@ -187,7 +246,6 @@ def main():
             dt = item.pop("_dt")
             if dt < until:
                 old_streak += 1
-                print(f"[info] idxno={idxno} {item['date']} (목표일 이전, streak {old_streak})")
                 if old_streak >= STOP_STREAK:
                     print(f"[info] 목표일 이전 기사 연속 {STOP_STREAK}건 → 백필 완료")
                     break
@@ -199,9 +257,40 @@ def main():
                     print(f"[info] +{item['date']} | {item['title'][:40]}")
         idxno -= 1
         time.sleep(SLEEP)
+    return added, "백필 실행"
 
-    total = write_outputs(merged, now)
-    print(f"[info] 백필 종료: 신규 {added}건 추가 (기존 {prev} → 최종 {total}건)")
+
+def run_refresh(merged, now):
+    targets = [it for it in merged.values()
+               if lead_is_truncated(it.get("lead", ""))][:MAX_STEPS]
+    print(f"[info] 리드문 리프레시: 대상 {len(targets)}건")
+    fixed = 0
+    for it in targets:
+        soup = get_soup(it["url"])
+        if soup is None:
+            time.sleep(SLEEP)
+            continue
+        lead = lead_from_detail_soup(soup)
+        if lead and (not lead_is_truncated(lead) or not it.get("lead")):
+            it["lead"] = lead
+            fixed += 1
+            print(f"[info] 교체 {it['date']} | {it['title'][:30]}")
+        time.sleep(SLEEP)
+    return fixed, "리드문 리프레시"
+
+
+def main():
+    now = datetime.now(KST)
+    merged = load_json()
+    prev = len(merged)
+
+    if REFRESH_LEADS:
+        changed, label = run_refresh(merged, now)
+    else:
+        changed, label = run_backfill(merged, now)
+
+    total = write_outputs(merged, now, label)
+    print(f"[info] 종료: 변경 {changed}건 (기존 {prev} → 최종 {total}건)")
 
 
 if __name__ == "__main__":
