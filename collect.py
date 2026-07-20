@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-AI타임스 기사목록 수집기 v2 (EDCF 주간픽용)
+AI타임스 기사목록 수집기 v3 (EDCF 주간픽용)
 - 매일 실행: 목록 페이지를 긁어 기존 articles.json에 '누적 병합'
-- 최근 10일치만 유지 → 일주일 스캔 완전 커버 (페이지네이션 불필요)
+- 최근 KEEP_DAYS일치만 유지 → 일주일 스캔 완전 커버
+- v3 변경점:
+  * 리드문 추출 보강: 목록 페이지에서 다중 셀렉터 시도 + 폴백
+  * 목록에서 리드문 못 찾은 기사는 상세 페이지 meta-description에서 추출
+    (실행당 DETAIL_FETCH_LIMIT건 제한 → 부하·차단 리스크 최소화)
+  * KEEP_DAYS 10 → 15
 - 외부 API 없음. 비용 0원.
 """
 import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 
 import requests
@@ -16,8 +22,11 @@ from bs4 import BeautifulSoup
 
 BASE = "https://www.aitimes.com"
 LIST_URL = BASE + "/news/articleList.html?page={page}&view_type=sm"
-MAX_PAGES = 3          # 매일 돌므로 1~3페이지면 충분 (2페이지부터 막혀도 무방)
-KEEP_DAYS = 10
+MAX_PAGES = 3            # 매일 돌므로 1~3페이지면 충분 (2페이지부터 막혀도 무방)
+KEEP_DAYS = 15           # 유지 기간 (주간픽 7일 + 여유)
+DETAIL_FETCH_LIMIT = 15  # 실행당 상세 페이지 방문 상한 (리드문 폴백용)
+DETAIL_FETCH_SLEEP = 1.0 # 상세 페이지 요청 간격(초)
+LEAD_MAX_LEN = 200
 KST = timezone(timedelta(hours=9))
 DATE_RE = re.compile(r"(\d{2})-(\d{2})\s+(\d{2}):(\d{2})")
 
@@ -43,6 +52,34 @@ def parse_date(text, now):
         return None
 
 
+def clean_lead(text):
+    """리드문 정리: 공백 정규화, 길이 제한."""
+    if not text:
+        return ""
+    text = re.sub(r"\s+", " ", text).strip()
+    # 목록에 붙는 말줄임 기호 제거
+    text = text.rstrip("…").rstrip("...")
+    return text[:LEAD_MAX_LEN]
+
+
+def extract_lead_from_li(li, title):
+    """목록 페이지 li 안에서 리드문 추출. 다중 셀렉터 → 폴백 순."""
+    # 1) 알려진 클래스 후보 (ndsoft CMS 계열)
+    for sel in ("p.lead a", "p.lead", ".lead", "p.sbody", ".article-summary", "p.summary"):
+        el = li.select_one(sel)
+        if el:
+            t = clean_lead(el.get_text(" ", strip=True))
+            if len(t) >= 20:
+                return t
+    # 2) 폴백: li 안의 <p> 중 가장 긴 텍스트 (제목과 다르고 20자 이상)
+    best = ""
+    for p in li.find_all("p"):
+        t = clean_lead(p.get_text(" ", strip=True))
+        if len(t) >= 20 and t != title and len(t) > len(best):
+            best = t
+    return best
+
+
 def parse_list_page(html, now):
     soup = BeautifulSoup(html, "html.parser")
     items = []
@@ -66,8 +103,7 @@ def parse_list_page(html, now):
             section = t
             break
 
-        lead_el = li.select_one("p.lead, .lead")
-        lead = lead_el.get_text(" ", strip=True)[:150] if lead_el else ""
+        lead = extract_lead_from_li(li, title)
 
         items.append({
             "title": title,
@@ -77,6 +113,24 @@ def parse_list_page(html, now):
             "lead": lead,
         })
     return items
+
+
+def fetch_lead_from_detail(url):
+    """상세 페이지에서 meta-description 기반 리드문 추출 (폴백)."""
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=20)
+        r.raise_for_status()
+    except Exception as e:
+        print(f"[warn] 상세 fetch 실패 {url}: {e}", file=sys.stderr)
+        return ""
+    soup = BeautifulSoup(r.text, "html.parser")
+    for attrs in ({"property": "og:description"}, {"name": "description"}):
+        meta = soup.find("meta", attrs=attrs)
+        if meta and meta.get("content"):
+            t = clean_lead(meta["content"])
+            if len(t) >= 20:
+                return t
+    return ""
 
 
 def load_existing():
@@ -106,7 +160,8 @@ def main():
             print(f"[warn] page {page} fetch 실패: {e}", file=sys.stderr)
             continue
         items = parse_list_page(r.text, now)
-        print(f"[info] page {page}: {len(items)}건 파싱")
+        with_lead = sum(1 for it in items if it["lead"])
+        print(f"[info] page {page}: {len(items)}건 파싱 (리드문 {with_lead}건)")
         for it in items:
             if it["url"] not in merged:
                 new_count += 1
@@ -132,6 +187,20 @@ def main():
         key=lambda x: x["date"], reverse=True,
     )
 
+    # 리드문 없는 기사 → 상세 페이지 폴백 (최신순, 실행당 상한)
+    missing = [it for it in final if not it["lead"]]
+    if missing:
+        targets = missing[:DETAIL_FETCH_LIMIT]
+        print(f"[info] 리드문 미확보 {len(missing)}건 중 {len(targets)}건 상세 조회")
+        filled = 0
+        for it in targets:
+            lead = fetch_lead_from_detail(it["url"])
+            if lead:
+                it["lead"] = lead
+                filled += 1
+            time.sleep(DETAIL_FETCH_SLEEP)
+        print(f"[info] 상세 조회로 리드문 {filled}건 보강")
+
     with open("articles.json", "w", encoding="utf-8") as f:
         json.dump(
             {"generated": now.strftime("%Y-%m-%d %H:%M KST"),
@@ -153,7 +222,8 @@ def main():
     with open("articles.md", "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"[info] 저장 완료: 총 {len(final)}건 (기존 {prev_count} → 신규 +{new_count})")
+    lead_total = sum(1 for it in final if it["lead"])
+    print(f"[info] 저장 완료: 총 {len(final)}건 (기존 {prev_count} → 신규 +{new_count}, 리드문 보유 {lead_total}건)")
     if len(final) == 0:
         sys.exit(1)
 
