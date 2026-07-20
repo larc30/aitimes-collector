@@ -22,9 +22,10 @@ from bs4 import BeautifulSoup
 
 BASE = "https://www.aitimes.com"
 LIST_URL = BASE + "/news/articleList.html?page={page}&view_type=sm"
-MAX_PAGES = 3            # 매일 돌므로 1~3페이지면 충분 (2페이지부터 막혀도 무방)
+# 환경변수로 오버라이드 가능 (백필 등 일회성 딥스캔용: MAX_PAGES=12 python collect.py)
+MAX_PAGES = int(os.environ.get("MAX_PAGES", "3"))            # 평시 1~3페이지면 충분
 KEEP_DAYS = 15           # 유지 기간 (주간픽 7일 + 여유)
-DETAIL_FETCH_LIMIT = 15  # 실행당 상세 페이지 방문 상한 (리드문 폴백용)
+DETAIL_FETCH_LIMIT = int(os.environ.get("DETAIL_FETCH_LIMIT", "15"))  # 실행당 상세 방문 상한
 DETAIL_FETCH_SLEEP = 1.0 # 상세 페이지 요청 간격(초)
 LEAD_MAX_LEN = 200
 KST = timezone(timedelta(hours=9))
