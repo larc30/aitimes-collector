@@ -3,12 +3,20 @@ name: Backfill AITimes Articles
 on:
   workflow_dispatch:   # 수동 실행 전용 (스케줄 없음)
     inputs:
+      mode:
+        description: "실행 모드"
+        required: true
+        type: choice
+        default: "refresh_leads"
+        options:
+          - backfill        # 과거 기사 수집 (idxno 역순)
+          - refresh_leads   # 잘린 리드문을 본문 기반으로 교체
       until_date:
-        description: "이 날짜까지 과거 기사 수집 (YYYY-MM-DD)"
+        description: "[backfill] 이 날짜까지 과거 기사 수집 (YYYY-MM-DD)"
         required: false
         default: "2026-07-13"
       start_idxno:
-        description: "시작 idxno (비우면 기존 데이터 최소값-1부터 자동)"
+        description: "[backfill] 시작 idxno (비우면 자동)"
         required: false
         default: ""
 
@@ -28,10 +36,11 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4
 
-      - name: Backfill articles
+      - name: Run
         env:
           UNTIL_DATE: ${{ github.event.inputs.until_date || '2026-07-13' }}
           START_IDXNO: ${{ github.event.inputs.start_idxno }}
+          REFRESH_LEADS: ${{ github.event.inputs.mode == 'refresh_leads' && '1' || '' }}
         run: python backfill.py
 
       - name: Commit results
@@ -39,6 +48,6 @@ jobs:
           git config user.name "aitimes-collector"
           git config user.email "actions@github.com"
           git add articles.md articles.json
-          git diff --cached --quiet || git commit -m "backfill: $(date +'%Y-%m-%d %H:%M')"
+          git diff --cached --quiet || git commit -m "${{ github.event.inputs.mode }}: $(date +'%Y-%m-%d %H:%M')"
           git pull --rebase origin main
           git push
