@@ -1,0 +1,44 @@
+name: Backfill AITimes Articles
+
+on:
+  workflow_dispatch:   # 수동 실행 전용 (스케줄 없음)
+    inputs:
+      until_date:
+        description: "이 날짜까지 과거 기사 수집 (YYYY-MM-DD)"
+        required: false
+        default: "2026-07-13"
+      start_idxno:
+        description: "시작 idxno (비우면 기존 데이터 최소값-1부터 자동)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Backfill articles
+        env:
+          UNTIL_DATE: ${{ github.event.inputs.until_date || '2026-07-13' }}
+          START_IDXNO: ${{ github.event.inputs.start_idxno }}
+        run: python backfill.py
+
+      - name: Commit results
+        run: |
+          git config user.name "aitimes-collector"
+          git config user.email "actions@github.com"
+          git add articles.md articles.json
+          git diff --cached --quiet || git commit -m "backfill: $(date +'%Y-%m-%d %H:%M')"
+          git pull --rebase origin main
+          git push
