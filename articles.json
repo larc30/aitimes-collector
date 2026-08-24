@@ -1,7 +1,14 @@
 {
- "generated": "2026-08-24 19:41 KST",
- "count": 416,
+ "generated": "2026-08-25 07:32 KST",
+ "count": 417,
  "items": [
+  {
+   "title": "[8월24일] 중국 로봇, 1년 만에 100m 기록 절반 단축…“두뇌는 'GPT-2' 수준”",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=214278",
+   "date": "2026-08-25 07:00",
+   "section": "동영상기사",
+   "lead": "지난 주말 중국 베이징에서는 로봇 관련 대형 행사가 잇따라 열렸습니다. 하나는 세계로봇컨퍼런스(World Robot Conference) 였고, 다른 하나는 세계휴머노이드로봇체육대회(World Humanoid Robot Games) 였습니다."
+  },
   {
    "title": "엔비디아, 퍼플렉시티에 수십억달러 투자 논의…기업 가치 41조 평가",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=214316",
@@ -112,35 +119,35 @@
    "url": "https://www.aitimes.com/news/articleView.html?idxno=214313",
    "date": "2026-08-24 15:30",
    "section": "",
-   "lead": ""
+   "lead": "데이터 컨설팅 전문 플러스제로(대표 정성진)는 서울 코엑스에서 열린 'AI 서밋 서울 & 엑스포 2026' 현장에서 차세대 AI GEO 마케팅 솔루션 '보이스 인텔리전스 v2.0'을 처음 공개해, 마케팅 담당자들의 관심을 받았다고 24일 밝혔다."
   },
   {
    "title": "딥시크, 주말 API 할증 없앤다…토·일요일 '오프피크' 단가 단일화",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=214279",
    "date": "2026-08-24 15:23",
    "section": "",
-   "lead": ""
+   "lead": "딥시크가 주말 API 요금에서 피크 시간대 할증을 없애고 토요일과 일요일에는 하루 종일 비성수기(Off-peak) 요금을 적용한다. 이달 초 이용량 급증에 대응하기 위해 도입했던 가변 요금제를 주말만 완화하면서, 대규모 데이터 처리나 비실시간 작업을 주말로 분산하려는 개발자와 기업의 비용 부담이 줄어들 전망이다."
   },
   {
    "title": "그렙, 미국 웨스트클리프대학에 AI 시험감독·역량평가 솔루션 제공",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=214298",
    "date": "2026-08-24 15:17",
    "section": "",
-   "lead": ""
+   "lead": "AI 온라인 테스팅 전문 그렙(대표 임성수)은 미국 캘리포니아주 어바인 소재 웨스트클리프 대학교(Westcliff University)와 AI 역량평가 및 교육 협력을 추진며 해외 대학 시장에 공식 진출했다고 24일 밝혔다."
   },
   {
    "title": "SKT, 서울대와 ‘10년 협력’ 이어가…AI 강좌로 인재 양성 지원",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=214293",
    "date": "2026-08-24 15:16",
    "section": "",
-   "lead": ""
+   "lead": "SK텔레콤(대표 정재헌)은 서울대학교와 손잡고 미래 AI 리더를 육성하는 산학협력 강좌를 개설했다고 24일 밝혔다. SKT는 2026년 2학기 서울대학교 전기·정보공학부 대학원생을 대상으로 ‘SKT-서울대 AI 공동과정’을 개설하고, 15주간 강의를 운영한다. 해당 강좌를 통해 AI 산업을 이끌어갈 다음 세대 인재를 직접 길러낸다는 목표다."
   },
   {
    "title": "AI 시대 부활 선언한 '인터넷 원조' 야후...\"30년 축적 데이터로 차별화\"",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=214296",
    "date": "2026-08-24 14:59",
    "section": "",
-   "lead": ""
+   "lead": "1세대 인터넷 거물 야후(Yahoo)가 수십년간 축적한 자체 데이터와 브랜드 신뢰도를 무기로 AI 시장에 본격적인 출사표를 던졌다. 단순한 기존 검색 시장에서의 후발 주자 추격이 아닌, 빅테크 모델과의 차별화를 통한 재도약 선언이다."
   },
   {
    "title": "중국 휴머노이드 로봇 매출은 '착시'…정부 훈련 센터가 부풀린 '가짜 수요'",
