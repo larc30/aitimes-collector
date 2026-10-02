@@ -22,7 +22,7 @@ BASE = "https://www.aitimes.com"
 LIST_URL = BASE + "/news/articleList.html?page={page}&view_type=sm"
 # 환경변수로 오버라이드 가능
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "3"))
-KEEP_DAYS = 15           # 유지 기간 (주간픽 7일 + 여유)
+KEEP_DAYS = 31           # 유지 기간 (반월발송 최대 16 + 여유)
 DETAIL_FETCH_LIMIT = int(os.environ.get("DETAIL_FETCH_LIMIT", "15"))
 DETAIL_FETCH_SLEEP = 1.0
 LEAD_MAX_LEN = 220
