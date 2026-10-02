@@ -29,7 +29,7 @@ STOP_STREAK = 8
 MISS_STREAK_LIMIT = 30
 SLEEP = 1.0
 LEAD_MAX_LEN = 220
-KEEP_DAYS = 15
+KEEP_DAYS = 31  # 유지 기간 (반월발송 최대 16 + 여유)
 KST = timezone(timedelta(hours=9))
 IDX_RE = re.compile(r"idxno=(\d+)")
 SENTENCE_END_RE = re.compile(r"[.!?」』\"']$")
