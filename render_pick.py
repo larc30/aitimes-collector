@@ -63,7 +63,7 @@ def render(d: dict) -> str:
     <tr><td style="padding:24px 28px 8px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{HL_BG};border:1px solid {HL_LINE};border-radius:8px;">
         <tr><td style="padding:16px 18px 6px;">
-          <div style="font:700 15px {FONT};color:{NAVY};">⭐ 이번 회차 TOP 3</div>
+          <div style="font:700 15px {FONT};color:{NAVY};">✅ 구매 체크포인트</div>
         </td></tr>
         <tr><td style="padding:4px 18px 10px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{hl_rows}
@@ -88,7 +88,7 @@ def render(d: dict) -> str:
             badge_txt = "#3D2E00" if star else "#FFFFFF"
             star_tag = (f'<span style="display:inline-block;background:{HL_BG};border:1px solid {HL_LINE};'
                         f'color:#7A5B00;font:700 11px {FONT};padding:1px 6px;border-radius:10px;margin-left:6px;'
-                        f'vertical-align:1px;">TOP 3</span>') if star else ""
+                        f'vertical-align:1px;">체크포인트</span>') if star else ""
             body += f"""
     <tr><td style="padding:12px 28px 4px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
