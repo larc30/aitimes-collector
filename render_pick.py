@@ -99,7 +99,7 @@ def render(d: dict) -> str:
           <div style="font:700 15px/1.45 {FONT};">
             <a href="{e(it['url'])}" style="color:{INK};text-decoration:none;">{e(it['title'])}</a>{star_tag}
           </div>
-          <div style="font:400 12px {FONT};color:{MUTED};padding:3px 0 8px;">AI타임스 · {e(it['date'])} · <a href="{e(it['url'])}" style="color:{ACCENT};text-decoration:none;">기사 보기 ›</a></div>
+          <div style="font:400 12px {FONT};color:{MUTED};padding:3px 0 8px;">{e(it['date'])}</div>
           <div style="font:400 14px/1.65 {FONT};color:{INK};">{e(it['summary'])}</div>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:10px;"><tr>
             <td style="background:{INS_BG};border-left:3px solid {ACCENT};padding:10px 12px;font:400 13.5px/1.6 {FONT};color:{INK};">
@@ -119,8 +119,7 @@ def render(d: dict) -> str:
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF1F5;"><tr><td align="center" style="padding:24px 12px;">
   <table role="presentation" width="680" cellpadding="0" cellspacing="0" style="width:100%;max-width:680px;background:#FFFFFF;border-radius:10px;overflow:hidden;border:1px solid {LINE};">
     <tr><td style="background:{NAVY};padding:22px 28px;">
-      <div style="font:400 12px {FONT};color:#C9D6E8;letter-spacing:.5px;">AI타임스 큐레이션 · EDCF×AI 관점</div>
-      <div style="font:700 21px/1.35 {FONT};color:#FFFFFF;padding-top:4px;">📌 EDCF×AI 픽</div>
+      <div style="font:700 21px/1.35 {FONT};color:#FFFFFF;">📌 EDCF×AI 픽</div>
       <div style="font:400 13px {FONT};color:#C9D6E8;padding-top:4px;">{e(period)} · {total}건</div>
     </td></tr>{highlight_block}{body}
     <tr><td style="padding:18px 28px 22px;font:400 11.5px/1.6 {FONT};color:{MUTED};">
