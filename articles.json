@@ -1,7 +1,147 @@
 {
- "generated": "2026-10-02 10:29 KST",
- "count": 327,
+ "generated": "2026-10-02 19:24 KST",
+ "count": 347,
  "items": [
+  {
+   "title": "플리토, 첫 브랜드 ‘보글’로 글로벌 통역 시장 조준…\"매출 상승 이어갈 것\"",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215927",
+   "date": "2026-10-02 18:20",
+   "section": "",
+   "lead": "자체 데이터 축적으로 AI 번역, 통역의 성능을 고도화해 온 플리토가 온프레미스를 중심으로 매출 성장 곡선을 이루며 창업 이후 첫 브랜드명을 전격 공개했다. 언어 데이터 전문 플리토(대표 이정수)가 30일 미디어 인사이트 데이를 통해 AI 통번역 솔루션 통합 브랜드 ‘보글(Vogl)’을 공개했다."
+  },
+  {
+   "title": "아마존, AI 에이전트 전용 오픈소스 의사결정 모델 ‘스트랜즈 디사이더 2B’ 공개",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215887",
+   "date": "2026-10-02 18:16",
+   "section": "",
+   "lead": "AI 에이전트가 복잡한 작업을 수행할수록 매 순간 어떤 행동을 선택할지 빠르게 판단하는 능력이 중요해지고 있다. 이런 판단을 생성 AI에 맡기는 대신 별도의 소형 모델로 처리해 속도와 비용을 낮추려는 움직임이 확대되고 있다."
+  },
+  {
+   "title": "구글 딥마인드, AI가 만든 단백질·유전체 추적하는 워터마크 기술 공개",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215902",
+   "date": "2026-10-02 18:06",
+   "section": "",
+   "lead": "AI가 생명과학 연구에 활용되면서 기존에 없던 단백질과 유전체를 설계하는 기술도 빠르게 발전하고 있다. 하지만 AI가 만든 생물학적 설계가 실제 실험과 데이터베이스에 활용되면서 그 출처를 확인하고 추적하는 새로운 과제도 등장했다."
+  },
+  {
+   "title": "\"다섯 손가락 필요 없다\"...보스턴 다이내믹스, 네 손가락 로봇 손 공개",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215916",
+   "date": "2026-10-02 17:58",
+   "section": "동영상기사",
+   "lead": "보스턴 다이내믹스가 사람 손을 흉내 내는 대신 실용성에 집중한 휴머노이드 로봇 '아틀라스(Atlas)' 전용 네 손가락 로봇 손을 공개했다. 기존 집게형과 달리 사람이 쓰던 전동 공구를 개조 없이 그대로 조작할 수 있는 것이 특징이다."
+  },
+  {
+   "title": "[AI 모델 신작] MS 음성인식 'MAI-트랜스크라이브-2-스트리밍' 등 6종",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215930",
+   "date": "2026-10-02 17:55",
+   "section": "",
+   "lead": "■ MS, 'MAI-트랜스크라이브-2-스트리밍' 및 'MAI-보이-2.1' 시리즈 공개"
+  },
+  {
+   "title": "구글 \"우주 데이터센터 실현 위해 스타십 최소 1800회 발사 필요\"",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215886",
+   "date": "2026-10-02 17:35",
+   "section": "",
+   "lead": "구글이 우주에 대규모 데이터센터를 구축하려면 스페이스X의 차세대 로켓 스타십(Starship)을 앞으로 10년 동안 최소 1800회 이상 발사해야 할 것으로 분석했다. 우주 기반 AI 인프라 구축을 위해 앞으로 발사 비용이 크게 낮아져야 한다는 것이 핵심이다."
+  },
+  {
+   "title": "텐센트, 오라클서 AI 칩 10만개 임대…규제 피하려 동남아 데이터센터 확보",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215909",
+   "date": "2026-10-02 17:18",
+   "section": "",
+   "lead": "중국의 텐센트가 AI 개발을 가속하기 위해 미국 클라우드 기업 오라클로부터 고성능 AI 칩 10만개를 임대하기로 했다. 미국의 반도체 수출 규제가 강화되는 가운데 중국 기업들이 동남아시아 등 해외 데이터센터로 컴퓨팅 자원을 확보하는 움직임이 확대되고 있다."
+  },
+  {
+   "title": "업스테이지, 판단 전용 AI ‘솔라 디사이드’ 출시…“제브보다 빠르고 정확”",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215919",
+   "date": "2026-10-02 17:08",
+   "section": "",
+   "lead": "‘제브’로 인해 판단 전용 AI 붐이 일어난 가운데, 업스테이지도 ‘솔라 미니 4’를 기반 모델로 ‘솔라 디사이드(Solar Decide)’를 공개했다. 김성훈 업스테이지 대표는 오픈라우터 플랫폼을 통해 판단만 해주는 AI ‘솔라 디사이드’를 출시했다고 2일 밝혔다."
+  },
+  {
+   "title": "[게시판] LG유플러스, 옵트에이아이와 AI 모델 경량화 협력 등 단신",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215920",
+   "date": "2026-10-02 17:00",
+   "section": "",
+   "lead": "■ LG유플러스(대표 홍범식)가 AI 모델 최적화 전문기업 옵트에이아이와 모델 경량화를 통한 '토큰 최적화' 기술 확보에 나선다. 옵트에이아이가 모델 경량화 연구·개발을, LG유플러스가 기술 검증과 적용을 맡는다."
+  },
+  {
+   "title": "[게시판] KT, 소상공인 플랫폼 ‘사장이지’에 AI면접 서비스 출시 등 단신",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215928",
+   "date": "2026-10-02 17:00",
+   "section": "",
+   "lead": "■ KT(대표 박윤영)는 지난 1일 소상공인 통합 플랫폼 ‘사장이지’에 ‘AI면접’ 서비스를 출시했다고 밝혔다. AI면접은 직원 채용 과정에서 면접에 필요한 사장님의 시간과 부담을 줄여주는 서비스다. 사장님이 지원자에게 카카오톡으로 온라인 면접 링크를 보내면, 지원자는 안내에 따라 AI가 생성한 질문에 답변하고 자기소개 영상을 촬영해 제출할 수 있다."
+  },
+  {
+   "title": "\"콜센터 AI 말 끊어도 알아듣는다\"...포지큐브, 차세대 AICC 개발",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215914",
+   "date": "2026-10-02 16:57",
+   "section": "",
+   "lead": "콜센터에 전화하면 AI 상담원이 말을 제대로 이해하지 못해 고객 불편을 겪는 사례가 적지 않다. 이러한 가운데 마치 사람과 대화하듯 말을 끊어도 즉시 반응하며, 상담과 업무를 동시에 처리하는 차세대 AI 상담원 개발이 추진된다. 포지큐브(대표 오성조)는 중소벤처기업부 '2026년 팁스(TIPS) 연구개발(R&D) 딥테크 트랙'에 선정됐다고 밝혔다."
+  },
+  {
+   "title": "에스티엔인포텍, 크레도와 한국 시장 총판 계약 체결",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215921",
+   "date": "2026-10-02 16:50",
+   "section": "",
+   "lead": "에스티엔인포텍(STNinfotech)은 최근 고속연결 솔루션을 전문으로 하는 미국 반도체 기업 크레도(Credo Technology Group Holding Ltd., 이하 \"Credo\")와 국내 시장 총판 계약을 체결했다고 발표했다."
+  },
+  {
+   "title": "백악관에 모인 AI 수장들…젠슨 황·저커버그, 아모데이에 '질문 세례'",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215918",
+   "date": "2026-10-02 16:44",
+   "section": "동영상기사",
+   "lead": "미국 백악관에서 열린 주요 AI 기업 수장들의 모임에서 앤트로픽을 둘러싸고 비공개 신경전이 벌어졌던 것으로 알려졌다. 도널드 트럼프 행정부가 마련한 이번 오찬 행사에는 젠슨 황 엔비디아 CEO와 마크 저커버그 메타 CEO를 비롯해 일론 머스크, 다리오 아모데이 앤트로픽 CEO, 그렉 브록먼 오픈AI 사장 등 애플을 제외한 주요 IT 대기업 최고경영진이 대거 참석했다."
+  },
+  {
+   "title": "캘리포니아, AI만으로 직원 해고·징계 못한다…뉴섬 주지사 법안 서명",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215911",
+   "date": "2026-10-02 16:25",
+   "section": "",
+   "lead": "캘리포니아가 기업의 AI 기반 인사 결정에 사람의 개입을 의무화하는 법을 도입했다. 개빈 뉴섬 캘리포니아 주지사는 30일(현지시간) 고용주가 AI에만 의존해 직원을 해고하거나 징계하는 것을 금지하는 SB 947에 서명했다."
+  },
+  {
+   "title": "머스크, 미 국방부 '미래 전쟁' 자문으로 공직 복귀...AI·드론 중심 미래전 대비",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215912",
+   "date": "2026-10-02 16:04",
+   "section": "",
+   "lead": "일론 머스크 CEO가 미국 정부 업무에 공식 복귀해 국방부의 미래 전쟁 구상에 자문역으로 참여한다. 정부효율부(DOGE)에서 물러난 지 약 1년 만에 제한적인 공직 자격으로 다시 합류하게 된 셈이다."
+  },
+  {
+   "title": "“반도체 성능 지표 ‘K-Perf’, 실험실 벗어나 실제 현장서 실증”",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215903",
+   "date": "2026-10-02 15:53",
+   "section": "",
+   "lead": ""
+  },
+  {
+   "title": "오픈AI, '불량 에이전트' 무단 활동 100여곳 조직에 통보",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215896",
+   "date": "2026-10-02 15:47",
+   "section": "",
+   "lead": ""
+  },
+  {
+   "title": "앤트로픽, 중국 'GLM-5.3' 해킹 위험성 경고...\"클로드 미소스와 맞먹는 능력\"",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215893",
+   "date": "2026-10-02 15:11",
+   "section": "",
+   "lead": ""
+  },
+  {
+   "title": "비드래프트, 중국 모델스코프서 '연구기관' 인증…AX-RAY 기반 중국 진출 추진",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215897",
+   "date": "2026-10-02 14:47",
+   "section": "",
+   "lead": ""
+  },
+  {
+   "title": "\"잘 가라 02\"…슈워제네거 '터미네이터 2' 오마주한 휴머노이드 해체 화제",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=215894",
+   "date": "2026-10-02 14:34",
+   "section": "동영상기사",
+   "lead": ""
+  },
   {
    "title": "소양강댐 수상태양광 95MW 늘린다…2030년까지 전국 500MW 개발",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=215831",
