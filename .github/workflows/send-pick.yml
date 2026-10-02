@@ -1,0 +1,44 @@
+name: Send EDCF AI Pick
+
+on:
+  push:
+    branches: [main]
+    paths: ["picks/*.html"]
+  workflow_dispatch:   # 수동 재발송
+    inputs:
+      file:
+        description: "재발송할 파일 경로 (예: picks/2026-10-16.html)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Find pick files
+        id: files
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "list=${{ github.event.inputs.file }}" >> "$GITHUB_OUTPUT"
+          else
+            list=$(git diff --name-only --diff-filter=AM ${{ github.event.before }} ${{ github.sha }} -- 'picks/*.html' 2>/dev/null \
+                   || git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'picks/*.html')
+            echo "list=$(echo $list)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send mail
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          MAIL_TO: jg.lee@koreaexim.go.kr
+        run: python send_pick.py ${{ steps.files.outputs.list }}
