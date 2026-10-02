@@ -64,7 +64,6 @@ def render(d: dict) -> str:
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{HL_BG};border:1px solid {HL_LINE};border-radius:8px;">
         <tr><td style="padding:16px 18px 6px;">
           <div style="font:700 15px {FONT};color:{NAVY};">⭐ 이번 회차 픽</div>
-          <div style="font:400 12px {FONT};color:{MUTED};padding-top:2px;">조달 실무에 바로 반영할 거리 위주로 골랐습니다</div>
         </td></tr>
         <tr><td style="padding:4px 18px 10px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{hl_rows}
