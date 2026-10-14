@@ -1,7 +1,14 @@
 {
- "generated": "2026-10-14 18:23 KST",
- "count": 592,
+ "generated": "2026-10-14 23:57 KST",
+ "count": 593,
  "items": [
+  {
+   "title": "앤트로픽 \"소형 AI, IoT 기기 감염해 자율 복제하는 'AI 웜' 수준 도달\"",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216242",
+   "date": "2026-10-14 18:23",
+   "section": "",
+   "lead": "앤트로픽이 소형 AI 모델이 인터넷에 연결된 사물인터넷(IoT) 기기를 감염시켜 스스로 복제하고 증식할 수 있는 수준에 가까워졌다고 경고했다. 데이터센터 GPU 없이도 스마트 TV나 가전 등 보안이 취약한 기기를 활용해 AI 모델을 전파하는 구조로, 중앙 서버가 없어 기존 악성코드보다 차단과 제거가 까다롭다."
+  },
   {
    "title": "오픈AI, 추론 감시 어려운 '루프 트랜스포머' 적용 모델 안전 확보에 전력",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216244",
@@ -112,35 +119,35 @@
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216252",
    "date": "2026-10-14 14:58",
    "section": "",
-   "lead": ""
+   "lead": "제프리 힌튼과 요슈아 벤지오 등 AI 분야 석학을 포함한 전 세계 연구자 400여명이 고도의 사이버 공격 능력을 갖춘 AI 시스템을 감독할 국제기구 설립을 촉구했다. AI 모델의 위험한 행동을 통제하고 보안 사고를 체계적으로 관리하려면 기업의 자발적인 안전 약속을 넘어 국제적인 감독 체계가 필요하다는 주장이다."
   },
   {
    "title": "FBI, 오픈AI 사내 회의실 불법 도청 혐의로 직원 체포",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216245",
    "date": "2026-10-14 14:50",
    "section": "",
-   "lead": ""
+   "lead": "미국 연방수사국(FBI)이 오픈AI 사내 임원 회의실에 몰래 녹음 장치를 설치한 혐의로 직원을 체포했다. 수사 당국은 이 장치가 오픈AI의 AI 기술과 관련한 기밀 대화를 녹음하기 위해 설치됐을 가능성이 있다고 밝혔다."
   },
   {
    "title": "KT, 최대 800Gbps 대역폭 지원 초고속·초저지연 'AI 전용회선' 선봬",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216231",
    "date": "2026-10-14 14:41",
    "section": "",
-   "lead": ""
+   "lead": "AI 학습·추론에 필요한 초고속·초저지연 네트워크 서비스를 표방한 'AI 전용회선'이 출시됐다. KT(대표 박윤영)는 14일 AI 데이터센터(AIDC) 확대로 늘어나는 대용량 데이터 전송 수요에 대응하기 위해 최대 800Gbps 대역폭을 지원하는 ‘AI 전용회선’을 출시했다고 밝혔다."
   },
   {
    "title": "LG CNS, 일본 통신사 KDDI와 동남아 에이전틱·피지컬 AI 시장 공조",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216238",
    "date": "2026-10-14 14:35",
    "section": "",
-   "lead": ""
+   "lead": "LG CNS(대표 현신균)가 일본 통신사 KDDI와 손잡고 동남아시아 AI 시장 공략에 나선다. LG CNS는 일본 통신기업 KDDI와 아태 지역 AI 전환(AX)·디지털 전환(DX) 사업 협력을 위한 업무협약을 맺었다고 14일 밝혔다."
   },
   {
    "title": "“AI가 배터리 신소재 골라준다”...포지큐브, 에너지 소재 추천 플랫폼 개발",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216225",
    "date": "2026-10-14 14:33",
    "section": "",
-   "lead": ""
+   "lead": "포지큐브(대표 오성조)는 한국생산기술연구원이 주관하는 ‘AI 기반 차세대 에너지 소재 추천 플랫폼 구축 사업'에 선정됐다고 14일 밝혔다. 포지큐브는 향후 5년간 비전언어모델(VLM), 멀티에이전트 검색증강생성(RAG), 그래프신경망(GNN)을 결합한 에너지 소재 추천 플랫폼을 개발한다."
   },
   {
    "title": "[AI리더의 서가]  AI 소프트웨어 시스템 아키텍처",
