@@ -1,7 +1,28 @@
 {
- "generated": "2026-10-14 23:57 KST",
- "count": 593,
+ "generated": "2026-10-15 09:22 KST",
+ "count": 596,
  "items": [
+  {
+   "title": "에이수스, ‘에이전트 컴퓨터’ 국내 시장 확대...개인용 AI PC부터 기업용 에이전틱 AI까지",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216267",
+   "date": "2026-10-15 09:05",
+   "section": "",
+   "lead": "에이수스 코리아(오픈플랫폼 비즈니스 사업 총괄 이종혁)는 AI 에이전트를 활용하는 새로운 개인용 PC 활용 개념인 ‘에이전트 컴퓨터(Agent Computer)’의 국내 시장 확대에 나선다고 15일 밝혔다. 이를 통해 개인용 AI 컴퓨팅부터 기업용 에이전틱 AI까지 다양한 수요에 대응하는 AI 컴퓨팅 솔루션 포트폴리오를 선보인다."
+  },
+  {
+   "title": "[AI리더의 서가] 바이브 코딩 프로덕션의 원칙",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216145",
+   "date": "2026-10-15 09:00",
+   "section": "",
+   "lead": "이 책은 AI 시대 소프트웨어 개발의 패러다임 전환을 주도하는 바이브 코딩의 완벽한 지침서입니다. 저자들은 자연어 기반 대화형 개발로 개발자를 단순 작업에서 해방시켜 창의적 문제 해결에 집중하도록 돕는 실전 전략과 본질적 원칙들을 제시합니다."
+  },
+  {
+   "title": "[10월14일] 챗GPT와 맞먹던 캐릭터닷AI가 4년 만에 파산한 이유",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216239",
+   "date": "2026-10-15 07:00",
+   "section": "",
+   "lead": "한때 챗GPT와 맞먹을 정도로 인기를 끌었던 캐릭터닷AI(Character.AI)가 결국 파산보호를 신청 했습니다. 2022년 서비스를 시작한 지 불과 4년 만입니다. 특히 눈길을 끄는 것은 한때 빅테크들의 인수 대상으로 거론됐던 회사가 이제는 28곳의 잠재적 인수자와 접촉하고도 소송과 규제 위험 때문에 인수자를 찾지 못했다는 점입니다."
+  },
   {
    "title": "앤트로픽 \"소형 AI, IoT 기기 감염해 자율 복제하는 'AI 웜' 수준 도달\"",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216242",
