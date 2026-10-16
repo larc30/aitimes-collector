@@ -1,7 +1,28 @@
 {
- "generated": "2026-10-15 23:47 KST",
- "count": 616,
+ "generated": "2026-10-16 09:10 KST",
+ "count": 619,
  "items": [
+  {
+   "title": "[AI리더의 서가] 벡터 데이터베이스",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216146",
+   "date": "2026-10-16 09:00",
+   "section": "",
+   "lead": "이 책은 벡터 데이터베이스의 핵심 개념을 코드로 직접 구현하며 배우고, SQLite3와 PostgreSQL 같은 익숙한 도구로 임베딩부터 RAG 시스템까지 단계적으로 구축하는 방법을 제시합니다. 독자는 특정 벤더에 종속되지 않는 근본적인 원리를 습득하여 어떤 환경에서도 적용 가능한 실무 능력을 갖추게 됩니다."
+  },
+  {
+   "title": "[10월15일] AI 수학 능력 급발전의 파장…과학 연구부터 인터넷 보안까지",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216279",
+   "date": "2026-10-16 07:00",
+   "section": "",
+   "lead": "지난주 오픈AI가 722편의 수학 연구 원고를 공개 하면서 AI의 과학 연구 능력에 관심이 집중됐습니다. 그동안 AI가 과학 연구를 수십년 앞당길 수 있다는 전망이 이어졌지만, 일반인들이 그 의미를 체감하기는 쉽지 않았습니다."
+  },
+  {
+   "title": "메타, ‘뮤즈 스파크 오픈’ 공개…맥 2대로 구동·미국 최고 성능 내세워",
+   "url": "https://www.aitimes.com/news/articleView.html?idxno=216309",
+   "date": "2026-10-16 06:17",
+   "section": "",
+   "lead": "메타가 복잡한 코딩과 여러 단계에 걸친 작업을 개인용 컴퓨터에서 수행하는 데 초점을 맞춘 오픈웨이트 모델 ‘뮤즈 스파크 오픈(Muse Spark Open)’을 공개했다. 8160억개의 매개변수를 갖춘 멀티모달 모델로, 애플과 협력해 맥 스튜디오 두 대를 연결한 환경에서 실행하도록 최적화했다."
+  },
   {
    "title": "스페이스XSI, 최고 성능 '그록 보이스 3.0' 공개...\"실무 전화 해결률 1위\"",
    "url": "https://www.aitimes.com/news/articleView.html?idxno=216297",
