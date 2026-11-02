@@ -11,7 +11,8 @@ JSON 구조:
   "sections": [
     {"title": "국내 AI 정책", "items": [
       {"no": 1, "title": "...", "url": "...", "date": "YYYY-MM-DD",
-       "summary": "...", "insight": "..."}
+       "summary": "...", "insight": "...",
+       "lens": "성능 검증"}                  # 선택. 검토 관점 태그
     ]}
   ]
 }
@@ -63,7 +64,7 @@ def render(d: dict) -> str:
     <tr><td style="padding:24px 28px 8px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{HL_BG};border:1px solid {HL_LINE};border-radius:8px;">
         <tr><td style="padding:16px 18px 6px;">
-          <div style="font:700 15px {FONT};color:{NAVY};">✅ 구매 체크포인트</div>
+          <div style="font:700 15px {FONT};color:{NAVY};">✅ 이번 회차 TOP 3</div>
         </td></tr>
         <tr><td style="padding:4px 18px 10px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{hl_rows}
@@ -86,9 +87,12 @@ def render(d: dict) -> str:
             star = it["no"] in hl_nos
             badge_bg = HL_LINE if star else ACCENT
             badge_txt = "#3D2E00" if star else "#FFFFFF"
+            lens = (it.get("lens") or "").strip()
+            lens_tag = (f'<span style="display:inline-block;border:1px solid {ACCENT};color:{ACCENT};'
+                        f'font:700 11px {FONT};padding:0 6px;border-radius:10px;margin-left:4px;">{e(lens)}</span>') if lens else ""
             star_tag = (f'<span style="display:inline-block;background:{HL_BG};border:1px solid {HL_LINE};'
                         f'color:#7A5B00;font:700 11px {FONT};padding:1px 6px;border-radius:10px;margin-left:6px;'
-                        f'vertical-align:1px;">체크포인트</span>') if star else ""
+                        f'vertical-align:1px;">TOP 3</span>') if star else ""
             body += f"""
     <tr><td style="padding:12px 28px 4px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
@@ -103,7 +107,7 @@ def render(d: dict) -> str:
           <div style="font:400 14px/1.65 {FONT};color:{INK};">{e(it['summary'])}</div>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:10px;"><tr>
             <td style="background:{INS_BG};border-left:3px solid {ACCENT};padding:10px 12px;font:400 13.5px/1.6 {FONT};color:{INK};">
-              <b style="color:{ACCENT};">EDCF 시사점</b>&nbsp; {e(it['insight'])}
+              <b style="color:{ACCENT};">EDCF 시사점</b>{lens_tag}&nbsp; {e(it['insight'])}
             </td>
           </tr></table>
         </td>
@@ -123,7 +127,7 @@ def render(d: dict) -> str:
       <div style="font:400 13px {FONT};color:#C9D6E8;padding-top:4px;">{e(period)} · {total}건</div>
     </td></tr>{highlight_block}{body}
     <tr><td style="padding:18px 28px 22px;font:400 11.5px/1.6 {FONT};color:{MUTED};">
-      본 메일은 AI타임스 공개 기사를 EDCF 조달 실무 관점에서 요약한 참고자료입니다. 매월 1일·16일 발송.
+      본 메일은 AI타임스 공개 기사를 EDCF AI 사업 검토 관점(성능 검증·성과 관리·Readiness·AI 활용 기준·사업 발굴)에서 요약한 참고자료입니다. 매월 1일·16일 발송.
     </td></tr>
   </table>
 </td></tr></table>
