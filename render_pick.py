@@ -7,7 +7,7 @@ JSON 구조:
 {
   "period": "2026.10.01~10.15",
   "title_suffix": "",                       # 선택. 예: "(테스트)"
-  "highlights": [ {"no": 3, "why": "한 줄 이유"} ],   # 2~3건
+  "highlights": [ {"no": 3, "tag": "규칙", "why": "한 줄 이유"} ],   # 2~3건, tag 선택(규칙/리스크/사례)
   "sections": [
     {"title": "국내 AI 정책", "items": [
       {"no": 1, "title": "...", "url": "...", "date": "YYYY-MM-DD",
@@ -48,12 +48,15 @@ def render(d: dict) -> str:
     hl_rows = ""
     for h in d.get("highlights", []):
         it = items_by_no.get(h["no"], {})
+        tag = (h.get("tag") or "").strip()
+        tag_html = (f'<span style="display:inline-block;background:#FFFFFF;border:1px solid {HL_LINE};color:#7A5B00;'
+                    f'font:700 11px {FONT};padding:0 6px;border-radius:10px;margin-right:6px;vertical-align:1px;">{e(tag)}</span>') if tag else ""
         hl_rows += f"""
         <tr><td style="padding:10px 0;border-top:1px solid #F5DFA6;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
             <td valign="top" width="34" style="font:700 13px {FONT};color:{NAVY};padding-top:1px;">#{h['no']}</td>
             <td style="font:400 14px/1.55 {FONT};color:{INK};">
-              <a href="{e(it.get('url',''))}" style="color:{INK};text-decoration:none;font-weight:700;">{e(it.get('title',''))}</a><br>
+              {tag_html}<a href="{e(it.get('url',''))}" style="color:{INK};text-decoration:none;font-weight:700;">{e(it.get('title',''))}</a><br>
               <span style="color:#7A5B00;font-size:13px;">→ {e(h['why'])}</span>
             </td>
           </tr></table>
